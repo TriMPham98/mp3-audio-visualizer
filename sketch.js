@@ -6,7 +6,7 @@ var songPlaying = false;
 var songStarted = false;
 
 function preload() {
-  song = loadSound("../../music/chasingDreams.mp3");
+  song = loadSound("./music/chasingDreams.mp3");
 }
 
 function setup() {
