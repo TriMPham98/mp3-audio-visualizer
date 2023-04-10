@@ -1,1 +1,5 @@
-p5*.js
+# Exclude all .js files
+*.js
+
+# Except sketch.js
+!sketch.js
