@@ -1,5 +1,8 @@
 # Exclude all .js files in the lib directory
 lib/*.js
 
+# Exclude all .js files in the lib/addons directory
+lib/addons/*.js
+
 # Except for sketch.js
 !lib/sketch.js
