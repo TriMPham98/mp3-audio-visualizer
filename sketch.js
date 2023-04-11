@@ -46,7 +46,7 @@ function draw() {
     for (var i = 0; i < 10; i++) {
       var p = new Particle();
       particles.push(p);
-      particles.push(p);
+      // particles.push(p);
     }
   }
 
