@@ -78,9 +78,9 @@ class Particle {
     this.vel = createVector(0, 0);
     this.acc = this.pos.copy().mult(random(0.0001, 0.00001));
 
-    this.w = random(3, 5);
+    this.w = random(3, 10);
 
-    this.color = [random(200, 255), random(200, 255), random(200, 255)];
+    this.color = [random(0, 255), random(0, 255), random(0, 255)];
   }
   update(cond) {
     this.vel.add(this.acc);
