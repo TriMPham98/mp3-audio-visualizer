@@ -43,8 +43,11 @@ function draw() {
   }
 
   if (songPlaying) {
-    var p = new Particle();
-    particles.push(p);
+    for (var i = 0; i < 10; i++) {
+      var p = new Particle();
+      particles.push(p);
+      particles.push(p);
+    }
   }
 
   for (var i = particles.length - 1; i >= 0; i--) {
@@ -80,7 +83,7 @@ class Particle {
 
     this.w = random(3, 10);
 
-    this.color = [random(0, 255), random(0, 255), random(0, 255)];
+    this.color = [random(0, 255), random(0, 255), random(220, 255)];
   }
   update(cond) {
     this.vel.add(this.acc);
