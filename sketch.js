@@ -53,7 +53,7 @@ function draw() {
   for (var i = particles.length - 1; i >= 0; i--) {
     if (!particles[i].edges()) {
       if (songPlaying || songStarted) {
-        particles[i].update(amp > 230); // Threshold for particle velocity boost
+        particles[i].update(amp > 218); // Threshold for particle velocity boost
       }
       particles[i].show();
     } else {
