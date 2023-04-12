@@ -43,7 +43,7 @@ function draw() {
   }
 
   if (songPlaying) {
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < 5; i++) {
       var p = new Particle();
       particles.push(p);
       // particles.push(p);
