@@ -2,4 +2,4 @@
 
 This is a web app that visualizes .mp3 files.
 
-https://user-images.githubusercontent.com/70353051/235340695-4dc20904-bb4a-4b2a-a4c2-dd147cd78ca9.mp4
+https://user-images.githubusercontent.com/70353051/235340722-86e70b29-86a7-4684-b7c9-8ba7ac33222c.mp4
