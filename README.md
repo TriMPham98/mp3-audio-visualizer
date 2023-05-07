@@ -1,4 +1,4 @@
-# mp3-audio-visualizer
+# mp3 Audio Visualizer 
 
 This is a web app that visualizes .mp3 files. 🎵⃝
 
