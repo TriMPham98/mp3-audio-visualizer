@@ -1,25 +1,24 @@
 body {
-    position: relative;
-    background-color: black;
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    
+  position: relative;
+  background-color: black;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .container {
-    position: absolute; /* Change this line */
-    top: 50%; /* Add this line */
-    left: 50%; /* Add this line */
-    transform: translate(-50%, -50%); /* Add this line */
-    background-color: black;
-    text-align: center;
-    z-index: 3;
+  position: absolute; /* Change this line */
+  top: 50%; /* Add this line */
+  left: 50%; /* Add this line */
+  transform: translate(-50%, -50%); /* Add this line */
+  background-color: black;
+  text-align: center;
+  z-index: 3;
+  border-radius: 25%;
 }
-
 
 h1 {
   color: white;
