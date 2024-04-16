@@ -118,3 +118,5 @@ class Particle {
     ellipse(this.pos.x, this.pos.y, this.w);
   }
 }
+
+// TODO: Add event listener for full screen on f key press
