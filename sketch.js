@@ -6,7 +6,7 @@ var songPlaying = false;
 var songStarted = false;
 
 function preload() {
-  song = loadSound("./files/music/ricFlairDripOffsetMetroBoomin.mp3");
+  song = loadSound("./files/music/chasingDreamsBen.mp3");
 }
 
 function setup() {
