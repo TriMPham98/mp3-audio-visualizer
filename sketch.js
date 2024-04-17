@@ -75,10 +75,6 @@ function mouseClicked() {
   }
 }
 
-function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
-}
-
 class Particle {
   constructor() {
     this.pos = p5.Vector.random2D().mult(250);
