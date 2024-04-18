@@ -115,4 +115,8 @@ class Particle {
   }
 }
 
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
+
 // TODO: Add event listener for full screen on f key press
