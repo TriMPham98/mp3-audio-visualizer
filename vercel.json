@@ -2,6 +2,13 @@
   "version": 2,
   "routes": [
     { "handle": "filesystem" },
+    { "src": "/lib/(.*)", "dest": "/lib/$1" },
+    { "src": "/public/(.*)", "dest": "/public/$1" },
     { "src": "/(.*)", "dest": "/index.html" }
+  ],
+  "builds": [
+    { "src": "*.html", "use": "@vercel/static" },
+    { "src": "*.js", "use": "@vercel/node" },
+    { "src": "*.css", "use": "@vercel/static" }
   ]
 }
