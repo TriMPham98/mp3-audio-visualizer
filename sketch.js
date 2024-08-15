@@ -1,18 +1,39 @@
-var song;
-var fft;
-var particles = [];
+let song;
+let fft;
+let particles = [];
 
-var songPlaying = false;
-var songStarted = false;
+let songPlaying = false;
+let songStarted = false;
+let startButton;
 
 function preload() {
-  song = loadSound("./public/music/chasingDreamsBen.mp3");
+  const audioPath =
+    location.hostname === "localhost" || location.hostname === "127.0.0.1"
+      ? "./public/music/chasingDreamsBen.mp3"
+      : "/public/music/chasingDreamsBen.mp3";
+
+  song = loadSound(
+    audioPath,
+    () => console.log("Audio loaded successfully"),
+    (err) => console.error("Error loading audio:", err)
+  );
+  console.log("Audio preload attempted");
 }
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   angleMode(DEGREES);
   fft = new p5.FFT();
+
+  startButton = createButton("Start Audio");
+  startButton.position(10, 10);
+  startButton.mousePressed(startAudio);
+
+  console.log("Setup complete");
+
+  if (!song) {
+    console.error("Song not loaded in setup");
+  }
 }
 
 function draw() {
@@ -24,36 +45,35 @@ function draw() {
   translate(width / 2, height / 2);
 
   fft.analyze();
-  amp = fft.getEnergy(20, 200);
+  let amp = fft.getEnergy(20, 200);
 
-  var wave = fft.waveform();
+  let wave = fft.waveform();
 
-  for (var t = -1; t <= 1; t += 2) {
+  for (let t = -1; t <= 1; t += 2) {
     beginShape();
-    for (var i = 0; i <= 180; i += 0.5) {
-      var index = floor(map(i, 0, 180, 0, wave.length - 1));
+    for (let i = 0; i <= 180; i += 0.5) {
+      let index = floor(map(i, 0, 180, 0, wave.length - 1));
 
-      var r = map(wave[index], -1, 1, 150, 350);
+      let r = map(wave[index], -1, 1, 150, 350);
 
-      var x = r * sin(i) * t;
-      var y = r * cos(i);
+      let x = r * sin(i) * t;
+      let y = r * cos(i);
       vertex(x, y);
     }
     endShape();
   }
 
   if (songPlaying) {
-    for (var i = 0; i < 5; i++) {
-      var p = new Particle();
+    for (let i = 0; i < 5; i++) {
+      let p = new Particle();
       particles.push(p);
-      // particles.push(p);
     }
   }
 
-  for (var i = particles.length - 1; i >= 0; i--) {
+  for (let i = particles.length - 1; i >= 0; i--) {
     if (!particles[i].edges()) {
       if (songPlaying || songStarted) {
-        particles[i].update(amp > 218); // Threshold for particle velocity boost
+        particles[i].update(amp > 218);
       }
       particles[i].show();
     } else {
@@ -63,15 +83,32 @@ function draw() {
 }
 
 function mouseClicked() {
-  if (song.isPlaying()) {
-    song.pause();
-    noLoop();
-    songPlaying = false;
+  if (song && song.isLoaded()) {
+    if (song.isPlaying()) {
+      song.pause();
+      noLoop();
+      songPlaying = false;
+    } else {
+      song.play();
+      loop();
+      songPlaying = true;
+      songStarted = true;
+    }
   } else {
-    song.play();
-    loop();
-    songPlaying = true;
-    songStarted = true;
+    console.log("Song not loaded yet or song object is null");
+  }
+}
+
+function startAudio() {
+  if (song && song.isLoaded()) {
+    if (!song.isPlaying()) {
+      song.play();
+      songPlaying = true;
+      songStarted = true;
+      loop();
+    }
+  } else {
+    console.log("Song not loaded yet");
   }
 }
 
@@ -119,4 +156,8 @@ function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
 
-// TODO: Add event listener for full screen on f key press
+// Initialize p5 when the window loads
+window.addEventListener("load", function () {
+  new p5();
+  console.log("p5 initialized");
+});
